@@ -3,6 +3,29 @@ from edge import Edge
 alphabet_list = list(string.ascii_uppercase)
 
 
+def readInputFile(userResponse):
+    lines = [line for line in open('input.txt') if not line.startswith('#') and
+             len(line.strip())]
+    nodesCount = int(lines[0].split("\n")[0])
+    reliability = list(map(float, lines[1].split("\n")[0].split(" ")))
+    cost = list(map(float, lines[2].split("\n")[0].split(" ")))
+    edgesCount = len(reliability)
+
+    print("Number of Nodes:", nodesCount)
+    print("Reliability Matrix:" , reliability)
+    print("Cost Matrix:" , cost)
+    print("Number of edges:", edgesCount)
+
+    if userResponse[0]:
+        writeFile("resultPartA.txt",nodesCount, reliability,cost, edgesCount)
+        print("running A")
+
+    if userResponse[1]:
+        writeFile("resultPartB.txt",nodesCount, reliability,cost, edgesCount)
+        print("running B")
+
+    return [nodesCount, reliability, cost, edgesCount]
+
 def read_data(filePath):
     number_of_cities = None
     costs = None
@@ -23,8 +46,8 @@ def read_data(filePath):
     return number_of_cities,costs,reliabilities
 
 
-def generate(filePath):
-    number_of_cities, costs,reliabilities = read_data(filePath)
+def generate():
+    number_of_cities, costs,reliabilities = read_data("input.txt")
     city_list = alphabet_list[0:int(number_of_cities)]
     edge_list = list()
     row = 0
@@ -38,3 +61,12 @@ def generate(filePath):
         else:
             col= col+1
     return city_list, edge_list
+
+
+def writeFile(file, numOfNodes, reliability,cost, edgeNum):
+    outputFile = open(file, "w")
+    outputFile.write("Number of Nodes: " + str(numOfNodes) + "\n")
+    outputFile.write("Reliability Matrix: " + str(reliability) + "\n")
+    outputFile.write("Cost Matrix: " + str(cost) + "\n")
+    outputFile.write("Number of edges: " + str(edgeNum) + "\n")
+    outputFile.close()
