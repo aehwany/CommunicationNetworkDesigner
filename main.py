@@ -171,12 +171,12 @@ def main():
     if userResponse[1]:
         if solB is None:
             solB = meetGivenReliability(edge, nodesCount, rbGoal, costGoal, True)
-        outputFileC = open("qB-Result.txt", "a")
-        outputFileC.write("-----" * 10 + "\n")
-        outputFileC.write("QB) Resuults of maximum reliability subject to given cost constraint: " + str(costGoal) + "\n")
-        maximizeRb(outputFileC, solB, nodesCount)
-        outputFileC.write("-----" * 10 + "\n")
-        outputFileC.close()
+        outputFileB = open("qB-Result.txt", "a")
+        outputFileB.write("-----" * 10 + "\n")
+        outputFileB.write("QB) Resuults of maximum reliability subject to given cost constraint: " + str(costGoal) + "\n")
+        maximizeRb(outputFileB, solB, nodesCount)
+        outputFileB.write("-----" * 10 + "\n")
+        outputFileB.close()
 
 if __name__ == "__main__":
     main()

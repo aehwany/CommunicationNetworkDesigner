@@ -63,10 +63,10 @@ def generate():
     return city_list, edge_list
 
 
-def writeFile(file, numOfNodes, reliability,cost, edgeNum):
+def writeFile(file, nodesCount, reliability,cost, edgesCount):
     outputFile = open(file, "w")
-    outputFile.write("Number of Nodes: " + str(numOfNodes) + "\n")
+    outputFile.write("Number of Nodes: " + str(nodesCount) + "\n")
     outputFile.write("Reliability Matrix: " + str(reliability) + "\n")
     outputFile.write("Cost Matrix: " + str(cost) + "\n")
-    outputFile.write("Number of edges: " + str(edgeNum) + "\n")
+    outputFile.write("Number of edges: " + str(edgesCount) + "\n")
     outputFile.close()
