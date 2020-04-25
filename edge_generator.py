@@ -3,8 +3,8 @@ from edge import Edge
 alphabet_list = list(string.ascii_uppercase)
 
 
-def readInputFile(userResponse):
-    lines = [line for line in open('input.txt') if not line.startswith('#') and
+def readInputFile(file_path):
+    lines = [line for line in open(file_path) if not line.startswith('#') and
              len(line.strip())]
     nodesCount = int(lines[0].split("\n")[0])
     reliability = list(map(float, lines[1].split("\n")[0].split(" ")))
@@ -16,15 +16,8 @@ def readInputFile(userResponse):
     print("Cost Matrix:" , cost)
     print("Number of edges:", edgesCount)
 
-    if userResponse[0]:
-        writeFile("resultPartA.txt",nodesCount, reliability,cost, edgesCount)
-        print("running A")
 
-    if userResponse[1]:
-        writeFile("resultPartB.txt",nodesCount, reliability,cost, edgesCount)
-        print("running B")
-
-    return [nodesCount, reliability, cost, edgesCount]
+    return nodesCount, reliability, cost, edgesCount
 
 def read_data(filePath):
     number_of_cities = None
@@ -43,11 +36,11 @@ def read_data(filePath):
         if costs is None:
             costs = line.rstrip('\n').split(' ')
             continue
-    return number_of_cities,costs,reliabilities
+    return int(number_of_cities),costs,reliabilities
 
 
-def generate():
-    number_of_cities, costs,reliabilities = read_data("input.txt")
+def generate(file_path):
+    number_of_cities, costs,reliabilities = read_data(file_path)
     city_list = alphabet_list[0:int(number_of_cities)]
     edge_list = list()
     row = 0
