@@ -41,7 +41,6 @@ class NetworkSolver(object):
                 if NetworkSolver.get_total_cost(graph) > self.cost_budget:
                     continue
 
-            #if NetworkSolver.get_total_reliability(graph, self.number_of_cities) >= self.reliability_goal:
             acceptedSet.append(graph)
         return acceptedSet
 
@@ -84,7 +83,6 @@ class NetworkSolver(object):
         else:
             return True
 
-
     @staticmethod
     def get_total_cost(graph):
         i = 0
@@ -101,8 +99,6 @@ class NetworkSolver(object):
         while True:
             if i == (len(combinations) - 1):
                 break
-            # elif sum(combinations[i]) < number_of_cities - 1:
-            #     del combinations[i]
             else:
                 i += 1
 
@@ -133,10 +129,4 @@ class NetworkSolver(object):
             if reliability > max_reliability:
                 max_reliability_graph = graph
                 max_reliability = reliability
-        # outputFile.write("\n")
-
-        # for x in range(len(max_reliability_graph)):
-        #     outputFile.write("Edge Number " + str(x+1) + " : " + str(max_reliability_graph[x].vertice_1) + " - " + str(max_reliability_graph[x].vertice_2) + " Reliability: " + str(max_reliability_graph[x].reliability) + " Cost: " + str(max_reliability_graph[x].cost) + "\n")
-        # outputFile.write("Total cost: " + str(NetworkSolver.getTotalCost(max_reliability_graph)) + "\n")
-        # outputFile.write("Max Reliability " + str(NetworkSolver.get_total_reliability(max_reliability_graph, number_of_cities)) + "\n")
         return max_reliability, max_reliability_graph

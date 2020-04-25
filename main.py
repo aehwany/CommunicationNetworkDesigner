@@ -1,13 +1,6 @@
 import edge_generator
 from network_solver import NetworkSolver
 
-def getTotalCost(list):
-    i = 0
-    cost = 0
-    for i in range(len(list)):
-        cost += list[i].cost
-    return cost
-
 def main():
     try:
         file_path = input("Please set input file path: ")
@@ -45,6 +38,7 @@ def execute_mode_A(networkSolver):
         print(networkSolver.edge_list)
     else:
         print("No design found that meets the specified Reliability Goal")
+    print("\n")
 
 
 def execute_mode_B(networkSolver):

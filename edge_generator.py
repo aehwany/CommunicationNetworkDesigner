@@ -3,22 +3,6 @@ from edge import Edge
 alphabet_list = list(string.ascii_uppercase)
 
 
-def readInputFile(file_path):
-    lines = [line for line in open(file_path) if not line.startswith('#') and
-             len(line.strip())]
-    nodesCount = int(lines[0].split("\n")[0])
-    reliability = list(map(float, lines[1].split("\n")[0].split(" ")))
-    cost = list(map(float, lines[2].split("\n")[0].split(" ")))
-    edgesCount = len(reliability)
-
-    print("Number of Nodes:", nodesCount)
-    print("Reliability Matrix:" , reliability)
-    print("Cost Matrix:" , cost)
-    print("Number of edges:", edgesCount)
-
-
-    return nodesCount, reliability, cost, edgesCount
-
 def read_data(filePath):
     number_of_cities = None
     costs = None
@@ -54,12 +38,3 @@ def generate(file_path):
         else:
             col= col+1
     return city_list, edge_list
-
-
-def writeFile(file, nodesCount, reliability,cost, edgesCount):
-    outputFile = open(file, "w")
-    outputFile.write("Number of Nodes: " + str(nodesCount) + "\n")
-    outputFile.write("Reliability Matrix: " + str(reliability) + "\n")
-    outputFile.write("Cost Matrix: " + str(cost) + "\n")
-    outputFile.write("Number of edges: " + str(edgesCount) + "\n")
-    outputFile.close()
